@@ -1,0 +1,187 @@
+import { useState } from "react";
+import { BarChart, LineChart, PieChart, Share2, Download, Save, Upload, Code, LayoutGrid, Layers, Activity, Radar, AreaChart, ScatterChart } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import FeatureCard from "@/components/FeatureCard";
+import HeroSection from "@/components/HeroSection";
+import ChartPreview from "@/components/ChartPreview";
+import AIInputSection from "@/components/AIInputSection";
+import useChartGenerator from "@/hooks/useChartGenerator";
+
+const Index = () => {
+  const { generatedChart, isGenerating, generateChart } = useChartGenerator();
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+
+  const handleGenerateChart = (prompt) => {
+    generateChart(prompt);
+  };
+
+  const features = [
+    {
+      icon: <BarChart className="h-10 w-10 text-blue-500" />,
+      title: "自然语言生成图表",
+      description: "输入简单描述，AI自动生成专业数据可视化图表"
+    },
+    {
+      icon: <LineChart className="h-10 w-10 text-green-500" />,
+      title: "拖拽式图表设计器",
+      description: "通过直观的拖拽界面自定义图表样式和数据映射"
+    },
+    {
+      icon: <Upload className="h-10 w-10 text-purple-500" />,
+      title: "多种数据源连接",
+      description: "支持CSV、Excel、JSON和API等多种数据源导入"
+    },
+    {
+      icon: <Download className="h-10 w-10 text-orange-500" />,
+      title: "图表导出与嵌入",
+      description: "一键导出为图片、Markdown或HTML片段用于分享"
+    },
+    {
+      icon: <Save className="h-10 w-10 text-red-500" />,
+      title: "组件封装与复用",
+      description: "将常用图表保存为模板，随时拖入新项目使用"
+    },
+    {
+      icon: <Code className="h-10 w-10 text-indigo-500" />,
+      title: "开发者友好",
+      description: "提供API和SDK，支持二次开发和自定义扩展"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Header />
+      
+      <main className="flex-grow">
+        <HeroSection onGenerateChart={handleGenerateChart} />
+        
+        {/* 功能特点部分 */}
+        <section className="py-16 px-4 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">强大功能，简单操作</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <FeatureCard 
+                  key={index}
+                  icon={feature.icon}
+                  title={feature.title}
+                  description={feature.description}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        {/* AI输入演示部分 */}
+        <section className="py-16 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">体验AI图表生成</h2>
+            <p className="text-lg text-center text-gray-600 mb-12">输入自然语言描述，立即获得专业数据可视化</p>
+            
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <AIInputSection onGenerateChart={handleGenerateChart} isLoading={isGenerating} />
+                <ChartPreview chartData={generatedChart} />
+              </div>
+            </div>
+          </div>
+        </section>
+                
+        {/* API开放平台部分 */}
+        <section className="py-16 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">开放平台API</h2>
+            <p className="text-lg text-center text-gray-600 mb-12">通过NPM包导入，轻松集成到您的项目中</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-gray-50 p-8 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4">开发者集成</h3>
+                <p className="text-gray-600 mb-6">使用我们的NPM包，几行代码即可在您的应用中添加强大的图表生成功能</p>
+                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg mb-4 font-mono text-sm">
+                  npm install lowcode-insight-charts
+                </div>
+                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm">
+                  import {'{'} AIChart {'}'} from 'lowcode-insight-charts';<br/>
+                  <br/>
+                  &lt;AIChart prompt="展示2023年季度销售数据" /&gt;
+                </div>
+              </div>
+              
+              <div className="bg-gray-50 p-8 rounded-xl">
+                <h3 className="text-xl font-semibold mb-4">API功能</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <div className="bg-blue-100 text-blue-600 p-1 rounded-full mr-3 mt-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-medium">自然语言处理</span>
+                      <p className="text-sm text-gray-600">将文本描述转换为图表配置</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-blue-100 text-blue-600 p-1 rounded-full mr-3 mt-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-medium">数据处理</span>
+                      <p className="text-sm text-gray-600">自动清洗和转换各种格式的数据</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-blue-100 text-blue-600 p-1 rounded-full mr-3 mt-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-medium">图表生成</span>
+                      <p className="text-sm text-gray-600">支持10+种图表类型，自动选择最佳可视化方式</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-blue-100 text-blue-600 p-1 rounded-full mr-3 mt-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-medium">主题定制</span>
+                      <p className="text-sm text-gray-600">支持自定义颜色、字体和布局</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="mt-10 text-center">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors">
+                查看API文档
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        {/* 行动召唤部分 */}
+        <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">开始创建你的第一个智能图表</h2>
+            <p className="text-xl mb-8 opacity-90">无需编码知识，让AI和拖拽操作帮你完成专业数据可视化</p>
+            <button className="bg-white text-blue-600 hover:bg-blue-50 font-medium py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105">
+              免费开始使用
+            </button>
+          </div>
+        </section>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default Index;
