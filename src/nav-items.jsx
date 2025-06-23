@@ -1,8 +1,12 @@
-import { HomeIcon, BarChart2, Settings, FileText } from "lucide-react";
+import { HomeIcon, BarChart2, Settings, FileText, Code } from "lucide-react";
 import Index from "./pages/Index.jsx";
+import Doc from "./pages/Doc.jsx";
+import About from "./pages/About.jsx";
+import CodePage from "./pages/Code.jsx";
+import Ai from "./pages/Ai.jsx";
 
 /**
-* Central place for defining the navigation items. Used for navigation components and routing.
+* 配置路由
 */
 export const navItems = [
 {
@@ -12,21 +16,27 @@ export const navItems = [
     page: <Index />,
 },
 {
-    title: "图表库",
-    to: "/charts",
-    icon: <BarChart2 className="h-4 w-4" />,
-    page: <div>图表库页面</div>,
+    title: "AI",
+    to: "/ai",
+    icon: <Code className="h-4 w-4" />,
+    page: <Ai />,
 },
 {
     title: "模板",
     to: "/templates",
     icon: <FileText className="h-4 w-4" />,
-    page: <div>模板页面</div>,
+    page: <CodePage />,
 },
 {
-    title: "设置",
-    to: "/settings",
+    title: "关于",
+    to: "/about",
     icon: <Settings className="h-4 w-4" />,
-    page: <div>设置页面</div>,
+    page: <About />,
 },
+{
+    title: "文档",
+    to: "/docs",
+    icon: <BarChart2 className="h-4 w-4" />,
+    page: <Doc />,
+  },  
 ];

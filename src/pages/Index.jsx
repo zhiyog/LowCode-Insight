@@ -158,25 +158,9 @@ const Index = () => {
                 </ul>
               </div>
             </div>
-            
-            <div className="mt-10 text-center">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors">
-                查看API文档
-              </button>
-            </div>
           </div>
         </section>
         
-        {/* 行动召唤部分 */}
-        <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">开始创建你的第一个智能图表</h2>
-            <p className="text-xl mb-8 opacity-90">无需编码知识，让AI和拖拽操作帮你完成专业数据可视化</p>
-            <button className="bg-white text-blue-600 hover:bg-blue-50 font-medium py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105">
-              免费开始使用
-            </button>
-          </div>
-        </section>
       </main>
       
       <Footer />

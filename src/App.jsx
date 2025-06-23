@@ -6,6 +6,7 @@ import { navItems } from "./nav-items";
 
 const queryClient = new QueryClient();
 
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -13,6 +14,7 @@ const App = () => (
       <HashRouter>
         <Routes>
           {navItems.map(({ to, page }) => (
+            // 使用 <page /> 确保正确渲染组件
             <Route key={to} path={to} element={page} />
           ))}
         </Routes>

@@ -2,6 +2,24 @@ import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import useTranslation from "@/hooks/useTranslation";
 
+// 定义点击标题的回调函数
+const handleTitleClick = () => {
+  console.log('标题被点击了');
+  // 这里可以添加更多标题点击后的逻辑
+};
+
+// 定义点击描述的回调函数
+const handleDescriptionClick = () => {
+  console.log('描述被点击了');
+  // 这里可以添加更多描述点击后的逻辑
+};
+
+// 定义点击图表类型等信息框的回调函数
+const handleInfoBoxClick = (info) => {
+  console.log(`${info} 信息框被点击了`);
+  // 这里可以添加更多信息框点击后的逻辑
+};
+
 const HeroSection = ({ onGenerateChart }) => {
   const [prompt, setPrompt] = useState("");
   const generateText = useTranslation("chart.generate");
@@ -17,49 +35,39 @@ const HeroSection = ({ onGenerateChart }) => {
     <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h1 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 cursor-pointer"
+            onClick={handleTitleClick}
+          >
             AI驱动的低代码图表平台
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          <p 
+            className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto cursor-pointer"
+            onClick={handleDescriptionClick}
+          >
             通过自然语言和简单拖拽，轻松创建专业数据可视化图表，无需编程知识
           </p>
         </div>
         
-        <div className="max-w-3xl mx-auto">
-          <form onSubmit={handleSubmit} className="relative">
-            <input
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              placeholder="输入：帮我展示最近GitHub活跃趋势..."
-              className="w-full py-4 px-6 pr-16 rounded-full border border-gray-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
-              // 确保输入框未被禁用
-              disabled={false} 
-              // 确保输入框可编辑
-              readOnly={false} 
-            />
-            <button
-              type="button"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-colors"
-            >
-              <Sparkles className="h-6 w-6" />
-            </button>
-          </form>
-          
-          <div className="mt-6 text-center text-gray-500">
-            试试输入: "创建网站流量趋势图" 或 "生成QQ音乐数据"
-          </div>
-        </div>
-        
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div 
+            className="bg-white p-6 rounded-xl shadow-md cursor-pointer"
+            onClick={() => handleInfoBoxClick('图表类型')}
+          >
             <div className="text-blue-600 font-bold text-4xl mb-2">10+</div>
             <div className="text-gray-600">图表类型</div>
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div 
+            className="bg-white p-6 rounded-xl shadow-md cursor-pointer"
+            onClick={() => handleInfoBoxClick('从数据到图表')}
+          >
             <div className="text-blue-600 font-bold text-4xl mb-2">3步</div>
             <div className="text-gray-600">从数据到图表</div>
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div 
+            className="bg-white p-6 rounded-xl shadow-md cursor-pointer"
+            onClick={() => handleInfoBoxClick('无代码操作')}
+          >
             <div className="text-blue-600 font-bold text-4xl mb-2">100%</div>
             <div className="text-gray-600">无代码操作</div>
           </div>
