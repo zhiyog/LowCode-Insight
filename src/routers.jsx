@@ -1,8 +1,7 @@
 import { HomeIcon, BarChart2, Settings, FileText, Code } from "lucide-react";
 import Index from "./pages/Index.jsx";
-import Doc from "./pages/Code/index.jsx";
+import Doc from "./pages/Doc/index.jsx";
 import About from "./pages/About/index.jsx";
-import CodePage from "./pages/Doc/index.jsx";
 import Ai from "./pages/Ai/index.jsx";
 
 /**
@@ -22,21 +21,15 @@ export const navItems = [
     page: <Ai />,
 },
 {
-    title: "模板",
-    to: "/templates",
-    icon: <FileText className="h-4 w-4" />,
-    page: <CodePage />,
-},
+    title: "文档",
+    to: "/docs",
+    icon: <BarChart2 className="h-4 w-4" />,
+    page: <Doc />,
+},  
 {
     title: "关于",
     to: "/about",
     icon: <Settings className="h-4 w-4" />,
     page: <About />,
 },
-{
-    title: "文档",
-    to: "/docs",
-    icon: <BarChart2 className="h-4 w-4" />,
-    page: <Doc />,
-  },  
 ];

@@ -1,16 +1,14 @@
-import { useState } from "react";
-import { BarChart, LineChart, PieChart, Share2, Download, Save, Upload, Code, LayoutGrid, Layers, Activity, Radar, AreaChart, ScatterChart } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import FeatureCard from "@/components/FeatureCard";
-import HeroSection from "@/components/HeroSection";
+import { BarChart, LineChart, Download, Save, Upload, Code, LayoutGrid, Layers, Activity, Radar, AreaChart, ScatterChart } from "lucide-react";
+import Header from "@/components/home/Header";
+import Footer from "@/components/home/Footer";
+import FeatureCard from "@/components/home/FeatureCard";
+import HeroSection from "@/components/home/HeroSection";
 import ChartPreview from "@/components/ChartPreview";
 import AIInputSection from "@/components/AIInputSection";
 import useChartGenerator from "@/hooks/useChartGenerator";
 
 const Index = () => {
   const { generatedChart, isGenerating, generateChart } = useChartGenerator();
-  const [selectedTemplate, setSelectedTemplate] = useState(null);
 
   const handleGenerateChart = (prompt) => {
     generateChart(prompt);
@@ -19,33 +17,27 @@ const Index = () => {
   const features = [
     {
       icon: <BarChart className="h-10 w-10 text-blue-500" />,
-      title: "自然语言生成图表",
-      description: "输入简单描述，AI自动生成专业数据可视化图表"
+      title: "AI语言生成图表",
     },
     {
       icon: <LineChart className="h-10 w-10 text-green-500" />,
-      title: "拖拽式图表设计器",
-      description: "通过直观的拖拽界面自定义图表样式和数据映射"
+      title: "精美可视化图表",
     },
     {
       icon: <Upload className="h-10 w-10 text-purple-500" />,
       title: "多种数据源连接",
-      description: "支持CSV、Excel、JSON和API等多种数据源导入"
     },
     {
       icon: <Download className="h-10 w-10 text-orange-500" />,
-      title: "图表导出与嵌入",
-      description: "一键导出为图片、Markdown或HTML片段用于分享"
+      title: "支持图表导出与嵌入",
     },
     {
       icon: <Save className="h-10 w-10 text-red-500" />,
       title: "组件封装与复用",
-      description: "将常用图表保存为模板，随时拖入新项目使用"
     },
     {
       icon: <Code className="h-10 w-10 text-indigo-500" />,
-      title: "开发者友好",
-      description: "提供API和SDK，支持二次开发和自定义扩展"
+      title: "开发者友好，支持二次开发",
     }
   ];
 
@@ -60,16 +52,18 @@ const Index = () => {
         <section className="py-16 px-4 bg-gray-50">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">强大功能，简单操作</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {features.map((feature, index) => (
                 <FeatureCard 
                   key={index}
                   icon={feature.icon}
                   title={feature.title}
                   description={feature.description}
+                  style={{ maxWidth: '320px' }} // 设置最大宽度
                 />
               ))}
             </div>
+
           </div>
         </section>
         

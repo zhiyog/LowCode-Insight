@@ -50,7 +50,6 @@ const ThemeToggle = () => {
           <a href="#/" className="text-gray-600 hover:text-blue-600 font-medium">首页</a>
           <a href="#/ai" className="text-gray-600 hover:text-blue-600 font-medium">AI</a>
           <a href="#/docs" className="text-gray-600 hover:text-blue-600 font-medium">文档</a>
-          <a href="#/templates" className="text-gray-600 hover:text-blue-600 font-medium">模板</a>
           <a href="#/about" className="text-gray-600 hover:text-blue-600 font-medium">关于</a>
         </nav>
         
