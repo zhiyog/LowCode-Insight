@@ -20,7 +20,7 @@ const AIInputSection = ({ onGenerateChart, isLoading }) => {
         <textarea
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="例如：帮我创建一个展示2023年上半年销售趋势的柱状图"
+          placeholder="例如：帮我创建一个展示游戏数据趋势的柱状图"
           className="w-full h-32 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
         />
         

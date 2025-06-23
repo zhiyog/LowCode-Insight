@@ -8,7 +8,7 @@ const Header = () => {
 
 const GitHubLink = () => (
   <a 
-    href="https://github.com" 
+    href="https://github.com/zhiyog/LowCode-Insight" 
     target="_blank" 
     rel="noopener noreferrer"
     className="text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center gap-2"
@@ -47,10 +47,11 @@ const ThemeToggle = () => {
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="/" className="text-gray-600 hover:text-blue-600 font-medium">首页</a>
-          <a href="/docs" className="text-gray-600 hover:text-blue-600 font-medium">文档</a>
-          <a href="/templates" className="text-gray-600 hover:text-blue-600 font-medium">模板</a>
-          <a href="/about" className="text-gray-600 hover:text-blue-600 font-medium">关于</a>
+          <a href="#/" className="text-gray-600 hover:text-blue-600 font-medium">首页</a>
+          <a href="#/ai" className="text-gray-600 hover:text-blue-600 font-medium">AI</a>
+          <a href="#/docs" className="text-gray-600 hover:text-blue-600 font-medium">文档</a>
+          <a href="#/templates" className="text-gray-600 hover:text-blue-600 font-medium">模板</a>
+          <a href="#/about" className="text-gray-600 hover:text-blue-600 font-medium">关于</a>
         </nav>
         
         <div className="flex items-center space-x-4">
