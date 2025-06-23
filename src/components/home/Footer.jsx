@@ -11,7 +11,7 @@ const Footer = () => {
               <span className="text-lg font-bold text-white">LowCode Insight</span>
             </div>
             <p className="text-sm text-gray-400 mb-4">
-              通过自然语言和拖拽配置生成专业数据可视化图表，无需编程知识
+              通过自然语言和配置生成专业数据可视化图表，无需编程知识
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white">

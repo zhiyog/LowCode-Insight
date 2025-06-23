@@ -14,6 +14,11 @@ const ChartPreview = ({ chartData }) => {
     if (!chartData) {
       return (
         <div className="flex flex-col items-center justify-center h-full text-center p-6">
+          <img 
+            src="https://nocode.meituan.com/photo/search?keyword=chart,data&width=200&height=200&source=meituan" 
+            alt="Chart placeholder" 
+            className="w-32 h-32 mx-auto object-cover opacity-50 mb-4"
+          />
           <p className="text-gray-500">输入你的需求，AI将为你生成图表</p>
         </div>
       );

@@ -41,7 +41,7 @@ const data = ${JSON.stringify(template.sampleData || [], null, 2)};
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               {template.icon}
-              <h3 className="text-xl font-semibold ml-2">{template.title}</h3>
+              <h3 className="text-xl font-semibold ml-2">{template.name}</h3>
             </div>
             <button 
               onClick={onClose}
