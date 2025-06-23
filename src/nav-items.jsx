@@ -1,9 +1,9 @@
 import { HomeIcon, BarChart2, Settings, FileText, Code } from "lucide-react";
 import Index from "./pages/Index.jsx";
-import Doc from "./pages/Doc.jsx";
-import About from "./pages/About.jsx";
-import CodePage from "./pages/Code.jsx";
-import Ai from "./pages/Ai.jsx";
+import Doc from "./pages/Code/index.jsx";
+import About from "./pages/About/index.jsx";
+import CodePage from "./pages/Doc/index.jsx";
+import Ai from "./pages/Ai/index.jsx";
 
 /**
 * 配置路由
