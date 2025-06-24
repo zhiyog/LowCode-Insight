@@ -45,15 +45,3 @@ playwright-report/
 test-results/
 cypress/videos/
 cypress/screenshots/
-
-# Output folders
-out/
-public/assets/
-docs/
-
-# Optional: Next.js
-.next/
-.vercel/
-
-# Optional: Turbo repo
-turbo/
