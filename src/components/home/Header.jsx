@@ -1,6 +1,6 @@
 import { BarChart2 } from "lucide-react";
 import { useState } from 'react';
-import { Moon, Sun, Github } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 
 const Header = () => {
   // 定义 GitHub 链接按钮
@@ -39,26 +39,27 @@ const ThemeToggle = () => {
   };
 
   return (
-    <header className="bg-white shadow-sm py-4 px-6">
+    <header className="bg-white shadow-sm py-4 px-6 fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center justify-start">  {/* 确保这里使用了 justify-start */}
           <BarChart2 className="h-8 w-8 text-blue-600" />
           <span className="text-xl font-bold text-gray-800">LowCode Insight</span>
         </div>
-        
+
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#/" className="text-gray-600 hover:text-blue-600 font-medium">首页</a>
           <a href="#/ai" className="text-gray-600 hover:text-blue-600 font-medium">AI</a>
           <a href="#/docs" className="text-gray-600 hover:text-blue-600 font-medium">文档</a>
           <a href="#/about" className="text-gray-600 hover:text-blue-600 font-medium">关于</a>
         </nav>
-        
+
         <div className="flex items-center space-x-4">
           <GitHubLink />
           <ThemeToggle />
         </div>
       </div>
     </header>
+
   );
 };
 

@@ -8,6 +8,9 @@ const PUBLIC_PATH = isProdEnv ? process.env.PUBLIC_PATH + "/" + process.env.CHAT
 const OUT_DIR = isProdEnv ? 'build/' + process.env.CHAT_VARIABLE : 'build';
 const PLUGINS  = isProdEnv ? [react()] : [
     react(),
+    dts({
+      insertTypesEntry: true, // 自动插入类型声明入口
+    }),
     {
       name: 'html-transform',
       transformIndexHtml(html) {
@@ -145,7 +148,21 @@ export default defineConfig({
   ],
   base: PUBLIC_PATH,
   build: {
-    outDir: OUT_DIR
+    lib: {
+      entry: 'src/packages/index.js', // 你需要打包的入口文件
+      name: 'lowcode-insight-charts', // 库的名字
+      fileName: (format) => `lowcode-insight-charts.${format}.js`, // 输出文件名
+    },
+    rollupOptions: {
+      // 确保外部依赖（如 React, Vue）不会被打包
+      external: ['react', 'react-dom'], // 根据需要添加外部依赖
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+      },
+    },
   },
   resolve: {
     alias: [

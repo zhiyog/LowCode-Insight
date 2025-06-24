@@ -9,7 +9,7 @@ import {
   RadarChartTemplate, 
   ComposedChartTemplate, 
   TreemapTemplate 
-} from "@/components/charts";
+} from "@/packages";
 import ChartTemplateDetail from "@/components/ChartTemplateDetail";
 import Header from "@/components/home/Header";
 
@@ -276,7 +276,7 @@ const Index = () => {
       <div>
         <Header /> 
       </div>
-      <div className="flex h-screen bg-gray-50">
+      <div className="flex h-screen bg-gray-50 mt-20">
         {/* 移动端侧边栏开关 */}
         <div className="md:hidden fixed top-4 left-4 z-50">
           <button

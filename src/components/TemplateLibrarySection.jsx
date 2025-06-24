@@ -9,7 +9,7 @@ import {
   RadarChartTemplate, 
   ComposedChartTemplate, 
   TreemapTemplate 
-} from "@/components/charts";
+} from "@/packages";
 
 /**
  * 模板库部分组件
