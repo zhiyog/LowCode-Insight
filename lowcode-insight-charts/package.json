@@ -1,8 +1,13 @@
 {
   "name": "lowcode-insight-charts",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.4",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/lowcode-insight-charts.cjs.js",  
+  "module": "dist/lowcode-insight-charts.es.js",  
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -8,9 +8,9 @@ const PUBLIC_PATH = isProdEnv ? process.env.PUBLIC_PATH + "/" + process.env.CHAT
 const OUT_DIR = isProdEnv ? 'build/' + process.env.CHAT_VARIABLE : 'build';
 const PLUGINS  = isProdEnv ? [react()] : [
     react(),
-    dts({
-      insertTypesEntry: true, // 自动插入类型声明入口
-    }),
+    // dts({
+    //   insertTypesEntry: true, // 自动插入类型声明入口
+    // }),
     {
       name: 'html-transform',
       transformIndexHtml(html) {
