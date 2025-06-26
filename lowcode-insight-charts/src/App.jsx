@@ -1,15 +1,19 @@
-import './App.css'
-import BarChart from './packages/index'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import { navItems } from "./nav-items";
 
-function App() {
+const queryClient = new QueryClient();
 
-  return (
-    <>
-      <title>图表的展示项目</title>
-      <h1>图表的展示项目</h1>
-      <BarChart />
-    </>
-  )
-}
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+      <HashRouter>
+        <Routes>
+          {navItems.map(({ to, page }) => (
+            <Route key={to} path={to} element={page} />
+          ))}
+        </Routes>
+      </HashRouter>
+  </QueryClientProvider>
+);
 
-export default App
+export default App;
