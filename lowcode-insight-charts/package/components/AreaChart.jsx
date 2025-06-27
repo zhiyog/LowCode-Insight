@@ -1,3 +1,23 @@
+/**
+ * 面积图组件
+ * @param {Array} data - 图表数据
+ * @param {string} xDataKey - X轴数据键名
+ * @param {Array} areas - 面积配置数组，包含dataKey、color和name
+ * @param {boolean} showGrid - 是否显示网格
+ * @param {boolean} showLegend - 是否显示图例
+ * @param {number} height - 图表高度
+ * @param {boolean} animate - 是否启用动画
+ * @param {boolean} tooltip - 是否显示提示框
+ * @param {boolean} smooth - 是否使用平滑曲线
+ * @param {number} strokeWidth - 线条宽度
+ * @param {boolean} stacked - 是否堆叠显示
+ * @param {boolean} percentage - 是否显示为百分比
+ * @param {boolean} gradientColors - 是否使用渐变色
+ * @param {boolean} showPercentage - 是否显示百分比
+ * @param {string} specialType - 特殊图表类型
+ * @param {string} className - 自定义CSS类名
+ */
+
 import React, { useState, useEffect } from 'react';
 import { AreaChart as RechartsAreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { motion } from 'framer-motion';
@@ -5,16 +25,22 @@ import ChartTooltip from './ChartTooltip';
 
 const AreaChart = ({
   data = [
-    { age: 0, social: 80, study: 0, game: 0, coding: 0, music: 0 },
-    { age: 5, social: 60, study: 30, game: 0, coding: 0, music: 0 },
+    { age: 0, social: 100, study: 0, game: 0, coding: 0, music: 0 },
+    { age: 5, social: 70, study: 30, game: 0, coding: 0, music: 0 },
     { age: 10, social: 40, study: 35, game: 15, coding: 5, music: 5 },
     { age: 15, social: 30, study: 30, game: 20, coding: 10, music: 10 },
     { age: 20, social: 25, study: 25, game: 15, coding: 25, music: 10 },
     { age: 25, social: 20, study: 20, game: 10, coding: 35, music: 15 },
   ],
   xDataKey = 'age',
-  areas = [{ dataKey: 'social', color: '#8884d8', name: 'Social' }],
-  showGrid = true,
+  areas = [
+    { dataKey: 'social', color: '#a7f3d1', name: 'Social' },
+    { dataKey: 'study', color: '#99f6e4', name: 'Study' },
+    { dataKey: 'game', color: '#a4f2fb', name: 'Game' },
+    { dataKey: 'coding', color: '#bbe6fd', name: 'Coding' },
+    { dataKey: 'music', color: '#bfdbff', name: 'Music' },
+  ],
+  showGrid = false,
   showLegend = true,
   height = 300,
   animate = true,
@@ -25,87 +51,31 @@ const AreaChart = ({
   percentage = false,
   gradientColors = false,
   showPercentage = false,
-  specialType = '',
   className = '',
+  ...props
 }) => {
+  // 图表数据状态
   const [chartData, setChartData] = useState(data);
 
-  // Managing animation logic
+  // 动画处理
   useEffect(() => {
     if (animate) {
       const timer = setTimeout(() => {
         setChartData(data);
-      }, 100);
+      }, 50);
       return () => clearTimeout(timer);
     } else {
       setChartData(data);
     }
   }, [data, animate]);
 
-  const renderTimeAllocation = () => {
-    let total = chartData.reduce((acc, item) => acc + item.social, 0); 
-    let accumulated = 0;
-    const processedData = chartData.map((item) => {
-      const startValue = accumulated;
-      accumulated += item.social;
-      return {
-        ...item,
-        startValue,
-        endValue: accumulated,
-        percentage: ((item.social / total) * 100).toFixed(1),
-      };
-    });
-
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className={`w-full ${className}`}
-      >
-        <div className="w-full" style={{ height }}>
-          <div className="relative w-full h-full">
-            {processedData.map((item, index) => {
-              const widthPercentage = (item.social / 24) * 100;
-              const color = areas[0]?.color || '#8884d8';
-              const adjustedColor = index % 2 === 0 ? color : `${color}dd`;
-              return (
-                <motion.div
-                  key={index}
-                  className="absolute top-0 h-full flex flex-col justify-between p-2 overflow-hidden"
-                  style={{
-                    left: `${(item.startValue / 24) * 100}%`,
-                    width: `${widthPercentage}%`,
-                    backgroundColor: adjustedColor,
-                    borderRadius: '8px',
-                    margin: '0 1px',
-                  }}
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: '100%' }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <div className="font-medium text-white truncate">{item.name}</div>
-                  <div className="text-white text-sm">
-                    {item.social}小时
-                    {showPercentage && <span className="ml-1">({item.percentage}%)</span>}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </motion.div>
-    );
-  };
-
-  return specialType === 'timeAllocation' ? (
-    renderTimeAllocation()
-  ) : (
+  return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       className={`w-full ${className}`}
+      {...props}
     >
       <ResponsiveContainer width="100%" height={height}>
         <RechartsAreaChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
@@ -145,3 +115,4 @@ const AreaChart = ({
 };
 
 export default AreaChart;
+

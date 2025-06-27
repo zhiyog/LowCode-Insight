@@ -198,25 +198,25 @@ const ChartEditor = ({
             }`}>
               <pre className="text-sm font-mono">
                 <code>
-{`import { ${chartName} } from './chart-library';
+                  {`import { ${chartName} } from './chart-library';
 
-const MyChart = () => {
-  return (
-    <${chartName}
-${Object.entries(props).map(([key, value]) => {
-  if (typeof value === 'string') {
-    return `      ${key}="${value}"`;
-  } else if (typeof value === 'boolean') {
-    return `      ${key}={${value}}`;
-  } else if (typeof value === 'number') {
-    return `      ${key}={${value}}`;
-  } else {
-    return `      ${key}={${JSON.stringify(value)}}`;
-  }
-}).join('\n')}
-    />
-  );
-};`}
+                  const MyChart = () => {
+                    return (
+                      <${chartName}
+                  ${Object.entries(props).map(([key, value]) => {
+                    if (typeof value === 'string') {
+                      return `      ${key}="${value}"`;
+                    } else if (typeof value === 'boolean') {
+                      return `      ${key}={${value}}`;
+                    } else if (typeof value === 'number') {
+                      return `      ${key}={${value}}`;
+                    } else {
+                      return `      ${key}={${JSON.stringify(value)}}`;
+                    }
+                  }).join('\n')}
+                      />
+                    );
+                  };`}
                 </code>
               </pre>
             </div>

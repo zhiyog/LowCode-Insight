@@ -143,44 +143,9 @@ const Index = () => {
             icon={actionButtons}
           >
             <div className="h-[350px]">
-              <AreaChart
-                data={timeAllocationData}
-                xDataKey="age"
-                areas={[
-                  { dataKey: "social", color: "#10B981", name: "社交/家庭" },
-                  { dataKey: "study", color: "#60A5FA", name: "学习" },
-                  { dataKey: "game", color: "#F59E0B", name: "游戏" },
-                  { dataKey: "coding", color: "#6366F1", name: "编程" },
-                  { dataKey: "music", color: "#EC4899", name: "音乐" }
-                ]}
-                stacked={true}
-                percentage={true}
-                height={300}
-                smooth={true}
-                gradientColors={true}
-                showGrid={false}
-                specialType="timeAllocation"
-                showPercentage={true}
-              />
+              <AreaChart />
             </div>
-            
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2">
-              {[
-                { label: "社交/家庭", color: "#10B981", desc: "与家人朋友相处的时间" },
-                { label: "学习", color: "#60A5FA", desc: "课程学习和自我提升" },
-                { label: "游戏", color: "#F59E0B", desc: "休闲娱乐时间" },
-                { label: "编程", color: "#6366F1", desc: "编程开发相关" },
-                { label: "音乐", color: "#EC4899", desc: "音乐创作和欣赏" }
-              ].map((item, index) => (
-                <div key={index} className="flex items-center space-x-2">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-                  <div>
-                    <div className="text-xs font-medium">{item.label}</div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400">{item.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          
           </ChartCard>
         );
       case 'bar':
@@ -191,16 +156,7 @@ const Index = () => {
             icon={actionButtons}
           >
             <div className="h-[300px]">
-              <BarChart
-                data={barData}
-                xDataKey="name"
-                dataKey="value"
-                colors={["#6366F1", "#8B5CF6", "#EC4899"]}
-                height={300}
-                barRadius={[8, 8, 0, 0]}
-                barSize={30}
-                showGrid={false}
-              />
+              <BarChart />
             </div>
           </ChartCard>
         );
@@ -212,17 +168,7 @@ const Index = () => {
             icon={actionButtons}
           >
             <div className="h-[300px]">
-              <PieChart
-                data={pieData}
-                dataKey="value"
-                nameKey="name"
-                colors={["#10B981", "#60A5FA", "#F59E0B", "#6366F1", "#EC4899"]}
-                height={300}
-                innerRadius={60}
-                outerRadius="70%"
-                paddingAngle={2}
-                showLabel={false}
-              />
+              <PieChart />
             </div>
           </ChartCard>
         );
@@ -234,18 +180,7 @@ const Index = () => {
             icon={actionButtons}
           >
             <div className="h-[300px]">
-              <LineChart
-                data={lineData}
-                xDataKey="month"
-                lines={[
-                  { dataKey: "coding", color: "#6366F1", name: "编程" },
-                  { dataKey: "learning", color: "#60A5FA", name: "学习" }
-                ]}
-                height={300}
-                smooth={true}
-                strokeWidth={3}
-                showGrid={false}
-              />
+              <LineChart />
             </div>
           </ChartCard>
         );
@@ -257,16 +192,7 @@ const Index = () => {
             icon={actionButtons}
           >
             <div className="h-[300px]">
-              <RadarChart
-                data={radarData}
-                nameKey="subject"
-                radars={[
-                  { dataKey: "A", color: "#6366F1", name: "自我评估" },
-                  { dataKey: "B", color: "#60A5FA", name: "他人评估" }
-                ]}
-                height={300}
-                fillOpacity={0.6}
-              />
+              <RadarChart />
             </div>
           </ChartCard>
         );
@@ -279,18 +205,7 @@ const Index = () => {
           >
             <div className="h-[300px] relative">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-lg" />
-              <ScatterChart
-                data={scatterData}
-                xDataKey="x"
-                yDataKey="y"
-                zDataKey="z"
-                scatters={[
-                  { dataKey: "data", color: "#6366F1", name: "项目" }
-                ]}
-                height={300}
-                bubbleSize={true}
-                showGrid={false}
-              />
+              <ScatterChart />
             </div>
           </ChartCard>
         );
@@ -302,16 +217,7 @@ const Index = () => {
             icon={actionButtons}
           >
             <div className="h-[300px]">
-              <GaugeChart
-                value={75}
-                min={0}
-                max={100}
-                colors={["#6366F1", "#8B5CF6", "#EC4899"]}
-                height={300}
-                unit="%"
-                title="总体完成率"
-                simpleMode={false}
-              />
+              <GaugeChart />
             </div>
           </ChartCard>
         );
