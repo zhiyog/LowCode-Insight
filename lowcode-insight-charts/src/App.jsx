@@ -1,14 +1,19 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import { navItems } from "./nav-items";
 
-import './App.css'
+const queryClient = new QueryClient();
 
-function App() {
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+      <HashRouter>
+        <Routes>
+          {navItems.map(({ to, page }) => (
+            <Route key={to} path={to} element={page} />
+          ))}
+        </Routes>
+      </HashRouter>
+  </QueryClientProvider>
+);
 
-  return (
-    <>
-      <title>图表的展示项目</title>
-      <h1>图表的展示项目</h1>
-    </>
-  )
-}
-
-export default App
+export default App;
